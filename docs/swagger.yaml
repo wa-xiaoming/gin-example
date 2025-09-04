@@ -1,0 +1,164 @@
+basePath: /
+definitions:
+  admin.genResultInfo:
+    properties:
+      error: {}
+      rows_affected:
+        type: integer
+    type: object
+  code.Failure:
+    properties:
+      code:
+        description: 业务码
+        type: integer
+      message:
+        description: 描述信息
+        type: string
+    type: object
+  model.Admin:
+    properties:
+      created_at:
+        description: 创建时间
+        type: string
+      id:
+        description: 主键
+        type: integer
+      mobile:
+        description: 手机号
+        type: string
+      username:
+        description: 用户名
+        type: string
+    type: object
+info:
+  contact: {}
+  title: gin-example 接口文档
+  version: v0.0.1
+paths:
+  /api/admin:
+    post:
+      consumes:
+      - application/json
+      description: 新增数据
+      parameters:
+      - description: 请求参数
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/model.Admin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Admin'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/code.Failure'
+      summary: 新增数据
+      tags:
+      - Table.admin
+  /api/admin/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据 ID 删除数据
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.genResultInfo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/code.Failure'
+      summary: 根据 ID 删除数据
+      tags:
+      - Table.admin
+    get:
+      consumes:
+      - application/json
+      description: 根据 ID 获取数据
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Admin'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/code.Failure'
+      summary: 根据 ID 获取数据
+      tags:
+      - Table.admin
+    put:
+      consumes:
+      - application/json
+      description: 根据 ID 更新数据
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 请求参数
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/model.Admin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.genResultInfo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/code.Failure'
+      summary: 根据 ID 更新数据
+      tags:
+      - Table.admin
+  /api/admins:
+    get:
+      consumes:
+      - application/json
+      description: 获取列表数据
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Admin'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/code.Failure'
+      summary: 获取列表数据
+      tags:
+      - Table.admin
+swagger: "2.0"

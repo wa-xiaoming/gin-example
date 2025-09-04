@@ -1,0 +1,41 @@
+[language]
+local = 'zh-cn'
+
+[mysql.read]
+addr = '127.0.0.1:3306'
+name = 'gin_example'
+pass = 'Qwer@1234'
+user = 'root'
+
+[mysql.write]
+addr = '127.0.0.1:3306'
+name = 'gin_example'
+pass = 'Qwer@1234'
+user = 'root'
+
+[redis]
+addr = '127.0.0.1:6379'
+pass = ''
+db = 0
+
+[mongo]
+uri = 'mongodb://127.0.0.1:27017'
+username = ''
+password = ''
+authSource = ''
+
+[jwt]
+secret = 'gin-example'
+
+[aes]
+secret = 'gin-example-123'
+
+[etcd]
+endpoints = ["127.0.0.1:2379"]
+
+[jaeger]
+endpoint = "http://127.0.0.1:14268/api/traces"
+sampler = 1.0
+
+[grpc]
+port = ":50051"
